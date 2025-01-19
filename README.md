@@ -24,7 +24,7 @@ Create a website that:
   - For the UI/UX.
   - A simple text box at the center for user input.
  
-  - ## Outcome
+## Outcome
 - The webpage takes user input.
 - Fetches topics from the Gemini API.
 - Fetches resources from the YouTube API.
