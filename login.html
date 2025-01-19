@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account</title>
+  <title>Login HTML CSS</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link  href="style.css" rel="stylesheet">
 
-  <script type="module" src="index.js" defer></script>
+  <script type="module" src="login.js" defer></script>
 </head>
 <body>
   <div class="background">
@@ -17,24 +17,25 @@
   </div>
 
   <form action="#">
-  <h3>Create Account</h3>
+  <h3>Login</h3>
 
   <label for="username">Username
     <input type="email" placeholder="Email" id="email" required>
   </label>
 
-  <label for="password">Create Password
+  <label for="password">Password
     <input type="password" placeholder="Password" id="password" required>
   </label>
 
-  <button id="submit">Create Account</button>
+  <button id="submit">Login</button>
 
-  <button id="google-sign-up-btn" class="google-btn">
-    <i class="fab fa-google"></i> Create Account with Google
+  <button id="google-sign-in-btn" class="google-btn">
+    <i class="fab fa-google"></i>
+    Login with Google
   </button>
 
   <div class="form">
-    <p>Have an account <a href="login.html">Login Here</a> </p>
+    <p>Don't have an account? <a href="index.html">Create One</a> </p>
   </div>
   </form>
 </body>
