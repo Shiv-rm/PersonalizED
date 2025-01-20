@@ -13,15 +13,24 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="features.html">Features</a></li>
-        <!-- <li><a href="#">Pricing</a></li> -->
-        <!-- <li><a href="#">Blog</a></li> -->
         <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="index.html" class="btn-signup">Sign Up</a></li>
-        <li><a href="login.html" class="btn-login">Login</a></li>
+    
+        <!-- These are the elements that will be shown/hidden based on login status -->
+        <li><span id="user-name" style="display: none;"></span></li> <!-- User name -->
+        
+        <!-- Login/Signup buttons -->
+        <li><a href="login.html" id="login-btn" class="btn-login">Login</a></li>
+        <li><a href="index.html" id="signup-btn" class="btn-signup">Sign Up</a></li>
+        
+        <!-- Logout button -->
+        <li><button id="logout-btn" style="display: none;">Logout</button></li>
       </ul>
     </nav>
+    
   </header>
-
+  
+  
+  
   <section class="hero">
     <div class="hero-content">
       <h1>Unlock Your Full Potential with Tailored Learning</h1>
@@ -117,7 +126,61 @@
     </div>
     <p>&copy; 2025 PersonalizEd. All rights reserved.</p>
   </footer>
+   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyC3Rsym5OJePWddS-4Glu0dSkvz6YV1JRQ",
+  authDomain: "personalised-dfb4d.firebaseapp.com",
+  projectId: "personalised-dfb4d",
+  storageBucket: "personalised-dfb4d.firebasestorage.app",
+  messagingSenderId: "22999873787",
+  appId: "1:22999873787:web:d0dc848c5a479509cb185e",
+  measurementId: "G-WDYERYMZDV"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Handle Auth State Changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is logged in
+    const displayName = user.displayName || user.email;
+
+    // Show user's name and logout button
+    document.getElementById("user-name").innerText = `Hello, ${displayName}`;
+    document.getElementById("user-name").style.display = "inline"; // Show user name
+    document.getElementById("logout-btn").style.display = "inline"; // Show logout button
+
+    // Hide login and signup buttons
+    document.getElementById("login-btn").style.display = "none";
+    document.getElementById("signup-btn").style.display = "none";
+  } else {
+    // User is logged out
+    // Hide user name and logout button
+    document.getElementById("user-name").style.display = "none";
+    document.getElementById("logout-btn").style.display = "none";
+
+    // Show login and signup buttons
+    document.getElementById("login-btn").style.display = "inline";
+    document.getElementById("signup-btn").style.display = "inline";
+  }
+});
+
+// Logout functionality
+document.getElementById("logout-btn").addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("User logged out");
+      window.location.href = "home.html"; // Redirect to login page
+    })
+    .catch((error) => console.error("Logout error:", error));
+});
+
+   </script>
   
 </body>
 </html>
