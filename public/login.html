@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login HTML CSS</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link  href="style.css" rel="stylesheet">
+
+  <script type="module" src="login.js" defer></script>
+</head>
+<body>
+  <div class="background">
+    <div class="shape"> </div>
+    <div class="shape"></div>
+  </div>
+
+  <form action="#">
+  <h3>Login</h3>
+
+  <label for="username">Username
+    <input type="email" placeholder="Email" id="email" required>
+  </label>
+
+  <label for="password">Password
+    <input type="password" placeholder="Password" id="password" required>
+  </label>
+
+  <button id="submit">Login</button>
+
+  <button id="google-sign-in-btn" class="google-btn">
+    <i class="fab fa-google"></i>
+    Login with Google
+  </button>
+
+  <div class="form">
+    <p>Don't have an account? <a href="index.html">Create One</a> </p>
+  </div>
+  </form>
+</body>
+</html>

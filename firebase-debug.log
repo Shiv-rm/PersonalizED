@@ -1,0 +1,52 @@
+[debug] [2025-01-20T12:37:47.222Z] ----------------------------------------------------------------------
+[debug] [2025-01-20T12:37:47.238Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2025-01-20T12:37:47.238Z] CLI Version:   13.29.1
+[debug] [2025-01-20T12:37:47.238Z] Platform:      darwin
+[debug] [2025-01-20T12:37:47.238Z] Node Version:  v22.12.0
+[debug] [2025-01-20T12:37:47.239Z] Time:          Mon Jan 20 2025 18:07:47 GMT+0530 (India Standard Time)
+[debug] [2025-01-20T12:37:47.239Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-20T12:37:47.395Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-20T12:37:47.396Z] > authorizing via signed-in user (shivam.k.mishra0805@gmail.com)
+[debug] [2025-01-20T12:37:47.396Z] [iam] checking project project1-2bec5 for permissions ["firebase.projects.get"]
+[debug] [2025-01-20T12:37:47.397Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:47.398Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:47.399Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5:testIamPermissions [none]
+[debug] [2025-01-20T12:37:47.399Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5:testIamPermissions x-goog-quota-user=projects/project1-2bec5
+[debug] [2025-01-20T12:37:47.399Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-20T12:37:49.201Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5:testIamPermissions 200
+[debug] [2025-01-20T12:37:49.201Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-20T12:37:49.202Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:49.202Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:49.202Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5 [none]
+[debug] [2025-01-20T12:37:49.914Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5 200
+[debug] [2025-01-20T12:37:49.915Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/project1-2bec5 {"projectNumber":"572624579421","projectId":"project1-2bec5","lifecycleState":"ACTIVE","name":"Project1","labels":{"firebase":"enabled"},"createTime":"2024-03-20T12:29:42.504810Z"}
+[info] 
+[info] === Serving from '/Users/apple/Documents/Final_Code'...
+[info] 
+[debug] [2025-01-20T12:37:49.918Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:49.918Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:49.919Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/project1-2bec5/sites 
+[debug] [2025-01-20T12:37:51.250Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/project1-2bec5/sites 200
+[debug] [2025-01-20T12:37:51.250Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/project1-2bec5/sites {"sites":[{"name":"projects/project1-2bec5/sites/project1-2bec5","defaultUrl":"https://project1-2bec5.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2025-01-20T12:37:51.250Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:51.250Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:51.250Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5/webApps/-/config [none]
+[debug] [2025-01-20T12:37:52.435Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5/webApps/-/config 200
+[debug] [2025-01-20T12:37:52.435Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5/webApps/-/config {"projectId":"project1-2bec5","appId":"1:572624579421:web:8c1aca80be8ef4e32216b4","storageBucket":"project1-2bec5.firebasestorage.app","apiKey":"AIzaSyCNq7VL958aqmXk61g_9PQOqagbMbfJG5Y","authDomain":"project1-2bec5.firebaseapp.com","messagingSenderId":"572624579421","measurementId":"G-9ZJHPG12RY"}
+[debug] [2025-01-20T12:37:52.466Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:52.466Z] Checked if tokens are valid: true, expires at: 1737379911674
+[debug] [2025-01-20T12:37:52.467Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5 [none]
+[debug] [2025-01-20T12:37:52.913Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5 200
+[debug] [2025-01-20T12:37:52.913Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/project1-2bec5 {"projectId":"project1-2bec5","projectNumber":"572624579421","displayName":"Project1","name":"projects/project1-2bec5","resources":{"hostingSite":"project1-2bec5"},"state":"ACTIVE","etag":"1_c3c45a03-2198-40d1-b836-b9f749d01f76"}
+[info] i  hosting[project1-2bec5]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[project1-2bec5]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:37:55 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:37:55 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:37:56 +0000] "GET /__/firebase/init.js?useEmulator=true HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:37:56 +0000] \"GET /__/firebase/init.js?useEmulator=true HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:37:56 +0000] "GET /bg.webp HTTP/1.1" 200 31552 "http://localhost:5002/style.css" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:37:56 +0000] \"GET /bg.webp HTTP/1.1\" 200 31552 \"http://localhost:5002/style.css\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:38:09 +0000] "GET /home.html HTTP/1.1" 200 - "http://localhost:5002/login.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:38:09 +0000] \"GET /home.html HTTP/1.1\" 200 - \"http://localhost:5002/login.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:38:09 +0000] "GET /home.css HTTP/1.1" 200 - "http://localhost:5002/home.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:38:09 +0000] \"GET /home.css HTTP/1.1\" 200 - \"http://localhost:5002/home.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:38:09 +0000] "GET /hero-image.jpg HTTP/1.1" 404 - "http://localhost:5002/home.css" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:38:09 +0000] \"GET /hero-image.jpg HTTP/1.1\" 404 - \"http://localhost:5002/home.css\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:38:26 +0000] "GET /alag.html HTTP/1.1" 200 - "http://localhost:5002/home.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:38:26 +0000] \"GET /alag.html HTTP/1.1\" 200 - \"http://localhost:5002/home.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:38:44 +0000] "GET /topics.html HTTP/1.1" 200 - "http://localhost:5002/alag.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:38:44 +0000] \"GET /topics.html HTTP/1.1\" 200 - \"http://localhost:5002/alag.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}
+[info] i  hosting: ::1 - - [20/Jan/2025:12:39:00 +0000] "GET /video.html HTTP/1.1" 200 - "http://localhost:5002/topics.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [20/Jan/2025:12:39:00 +0000] \"GET /video.html HTTP/1.1\" 200 - \"http://localhost:5002/topics.html\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0\""}}

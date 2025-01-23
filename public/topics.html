@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Roboto", Arial, sans-serif;
+            background: linear-gradient(135deg, #1e293b, #1a202c);
+            color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffd700;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #374151;
+            border-radius: 8px;
+            color: #63b3ed;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        ul li:hover {
+            background: #475569;
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        ul li.unclickable {
+            background: #2d3748; /* Darker color for disabled items */
+            color: #718096; /* Muted color */
+            cursor: not-allowed;
+        }
+        ul li.unclickable:hover {
+            background: #2d3748; /* Prevent hover effect */
+            transform: none; /* Prevent movement */
+            box-shadow: none; /* Prevent shadow */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Topics</h1>
+    <div id="topicsList"></div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        gapi.load("client", loadClient);
+    
+        function loadClient() {
+            gapi.client.setApiKey("AIzaSyDWDFULbFV7OM9B5WDzBUszoptOrESMm3c");
+            gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+                .then(() => console.log("YouTube API client loaded."),
+                      (err) => console.error("Error loading YouTube API client", err));
+        }
+    
+        const topicsList = document.querySelector("#topicsList");
+
+        // Array of 8 topics (replace with your topics)
+        const topics = JSON.parse(localStorage.getItem("generatedTopics")) || [
+            "Topic 1", "Topic 2", "Topic 3", "Topic 4",
+            "Topic 5", "Topic 6", "Topic 7", "Topic 8"
+        ];
+
+        // Boolean array to determine if topics are clickable
+        const topicStates = [true, false, false, false, false, false, false, false];
+
+        if (topics.length > 0) {
+            topicsList.innerHTML = "<ul>" + topics.map((topic, index) => `
+                <li 
+                    data-topic="${topic}" 
+                    id="topic-${index}" 
+                    class="${topicStates[index] ? 'clickable' : 'unclickable'}"
+                >
+                    ${topic}
+                </li>
+            `).join('') + "</ul>";
+        } else {
+            topicsList.innerHTML = "<p>No topics found. Please go back and try again.</p>";
+        }
+
+        const fetchVideo = async (query) => {
+            try {
+                const response = await gapi.client.youtube.search.list({
+                    "part": "snippet",
+                    "type": "video",
+                    "order": "relevance",
+                    "maxResults": 1,
+                    "q": query
+                });
+                return response.result.items[0];
+            } catch (err) {
+                console.error("Error fetching video", err);
+                return null;
+            }
+        };
+
+        topicsList.addEventListener("click", async (e) => {
+            const topic = e.target.dataset.topic;
+            const index = e.target.id.split("-")[1];
+
+            // Only proceed if the topic is clickable
+            if (topic && topicStates[index]) {
+                const video = await fetchVideo(topic);
+                if (video) {
+                    const videoDetails = {
+                        videoId: video.id.videoId,
+                        title: video.snippet.title,
+                        topic: topic,
+                    };
+                    localStorage.setItem("selectedVideo", JSON.stringify(videoDetails));
+                    window.location.href = "video.html";
+                } else {
+                    alert("No video found for this topic.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

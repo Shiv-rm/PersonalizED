@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Roboto", Arial, sans-serif;
+            background: linear-gradient(135deg, #1e293b, #1a202c);
+            color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ffd700;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #userInputForm, #topicsList, #videoListContainer {
+            margin-top: 20px;
+            background: #2d3748;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #1a202c;
+            color: #f8f8f8;
+            font-size: 1rem;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #63b3ed;
+            box-shadow: 0 0 8px #63b3ed;
+        }
+        button {
+            background: linear-gradient(90deg, #3182ce, #63b3ed);
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #63b3ed, #3182ce);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #374151;
+            border-radius: 8px;
+            color: #63b3ed;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        ul li:hover {
+            background: #475569;
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .video-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        .video-container p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Describe what You want to LEARN</h1>
+    <form id="userInputForm">
+        <input type="text" id="userInput" placeholder="Enter your topic" required>
+        <button type="submit">SEARCH</button>
+    </form>
+    <div id="topicsList"></div>
+    <div id="videoListContainer"></div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        gapi.load("client", loadClient);
+
+        // Load YouTube API client
+        function loadClient() {
+            gapi.client.setApiKey("AIzaSyDWDFULbFV7OM9B5WDzBUszoptOrESMm3c");
+            gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+                .then(() => console.log("YouTube API client loaded."),
+                      (err) => console.error("Error loading YouTube API client", err));
+        }
+
+        const API_KEY = "AIzaSyAEEEo7h46iWz2BBXy89yYyI5z4njo4mlk";
+        const AI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+        const inputForm = document.querySelector("#userInputForm");
+        const topicsList = document.querySelector("#topicsList");
+        const videoList = document.querySelector("#videoListContainer");
+
+        // Fetch topics from AI API
+        const generateTopics = async (prompt) => {
+            const response = await fetch(AI_API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [{ text: prompt }],
+                        },
+                    ],
+                }),
+            });
+
+            const data = await response.json();
+            const AIresponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (AIresponse) {
+                return AIresponse.split(/\n|\•/).filter(line => line.trim() !== "");
+            } else {
+                console.error("No response from AI API.");
+                return [];
+            }
+        };
+
+        // Fetch one YouTube video for a specific topic
+        const fetchVideo = async (query) => {
+            try {
+                const response = await gapi.client.youtube.search.list({
+                    "part": "snippet",
+                    "type": "video",
+                    "order": "relevance",
+                    "maxResults": 1,
+                    "q": query
+                });
+                return response.result.items[0];
+            } catch (err) {
+                console.error("Error fetching video", err);
+                return null;
+            }
+        };
+
+         // Save topics to localStorage and navigate to the topics page
+    const showTopicsOnAnotherPage = (topics) => {
+        localStorage.setItem("generatedTopics", JSON.stringify(topics));
+        window.location.href = "topics.html"; // Redirect to the second page
+    };
+    inputForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userPrompt = inputForm.querySelector("#userInput").value.trim();
+        if (!userPrompt) return;
+
+        const prompt = `Provide a concise and structured list of YouTube video topics related to "${userPrompt}". 
+        Ensure each subtopic includes the main topic "${userPrompt}". Limit to 8 key subtopics.`;
+        const generatedTopics = await generateTopics(prompt);
+
+        if (generatedTopics.length > 0) {
+            const filteredTopics = generatedTopics.slice(0, 8).map(topic => topic.trim());
+            showTopicsOnAnotherPage(filteredTopics); // Save and redirect
+        } else {
+            alert("No relevant subtopics found.");
+        }
+    });
+        
+
+        // Handle topic click
+        topicsList.addEventListener("click", async (e) => {
+            const topic = e.target.dataset.topic;
+            if (topic) {
+                videoList.innerHTML = `<p>Searching video for "${topic}"...</p>`;
+                const video = await fetchVideo(topic);
+                if (video) {
+                    videoList.innerHTML = `
+                        <div class="video-container">
+                            <a href="https://www.youtube.com/watch?v=${video.id.videoId}" target="_blank">
+                                <img src="http://i3.ytimg.com/vi/${video.id.videoId}/hqdefault.jpg" alt="${video.snippet.title}">
+                            </a>
+                            <p>${video.snippet.title}</p>
+                        </div>
+                    `;
+                    // Scroll to the video section
+                    videoList.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    videoList.innerHTML = "<p>No video found for this topic.</p>";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
