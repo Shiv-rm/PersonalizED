@@ -123,13 +123,13 @@
 
         // Load YouTube API client
         function loadClient() {
-            gapi.client.setApiKey("AIzaSyDWDFULbFV7OM9B5WDzBUszoptOrESMm3c");
+            gapi.client.setApiKey("api_key");
             gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
                 .then(() => console.log("YouTube API client loaded."),
                       (err) => console.error("Error loading YouTube API client", err));
         }
 
-        const API_KEY = "AIzaSyAEEEo7h46iWz2BBXy89yYyI5z4njo4mlk";
+        const API_KEY = "Api_key";
         const AI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
         const inputForm = document.querySelector("#userInputForm");
