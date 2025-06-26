@@ -66,3 +66,11 @@ Name	GitHub Profile	Core Responsibilities	Collaborated In
 🎬 Shubhra Varshney	@SV2111004 (replace link)	- Integrated YouTube API for videos
 - Designed feature cards and key UI components	- Paired with Janvi for visual consistency
 - Helped Akshat in layout improvements
+
+- | Name                    | GitHub Profile                                                          | Core Responsibilities                                                                                                         | Collaborated In                                                                       |
+| ----------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 🛠 **Shivam**           | [@shivamgithub](https://github.com/shivamgithub) *(replace link)*       | - Developed the **Topic Locking System**<br>- Set up the **GitHub repository** and maintained **project structure**           | - Assisted Janvi in Firebase logic<br>- Supported Akshat with unlock logic testing    |
+| 🔐 **Janvi**            | [@janvigit](https://github.com/janvigit) *(replace link)*               | - Built **Login/Signup** using **Firebase Authentication**<br>- Designed the **Home**, **Contact Us**, and **Features** pages | - Worked with Shivam on Firebase integration<br>- Collaborated with Shubhra on layout |
+| 📘 **Akshat**           | [@akshatgithub](https://github.com/akshatgithub) *(replace link)*       | - Integrated **Gemini API** to generate topic list<br>- Created flow to display generated topics                              | - Teamed up with Shivam on unlock testing<br>- Styled results with help from Shubhra  |
+| 🎬 **Shubhra Varshney** | [@shubhravarshney]([https://github.com/shubhravarshney](https://github.com/SV2111004)) *(replace link)* | - Integrated **YouTube API** for videos<br>- Designed **feature cards** and key UI components                                 | - Paired with Janvi for visual consistency<br>- Helped Akshat in layout improvements  |
+
