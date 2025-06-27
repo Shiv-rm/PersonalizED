@@ -2,7 +2,7 @@
 
 **PersonalizEd** is a web-based platform that personalizes your learning journey by letting you search *what you want to learn* and receive structured content in a progressive way — saving hours you'd otherwise spend looking for the right videos or roadmaps.
 
-Built by **Shubhra**, **Janvi**,**Shivam** and **Akshat** as part of a **college hackathon project**. It provides a structured, progressive way to learn any topic by combining the power of **Gemini API**, **YouTube API**, and **Firebase Authentication** — all wrapped in a responsive HTML, CSS, and JavaScript frontend.
+It was a college Project built by **Shubhra**, **Janvi**,**Shivam** and **Akshat** as part of a **college hackathon project**. It provides a structured, progressive way to learn any topic by combining the power of **Gemini API**, **YouTube API**, and **Firebase Authentication** — all wrapped in a responsive HTML, CSS, and JavaScript frontend.
 
 ---
 
